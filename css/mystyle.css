@@ -1,0 +1,52 @@
+div {
+    width: 1200px;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: green;
+}
+
+.player {
+    background-image: url("../assets/img/bg1.jpg");
+    background-size: cover;        
+    background-repeat: no-repeat;
+    background-position: center center;    
+}
+
+.playlist {
+    padding-top: 10%;
+    background-image: url("../assets/img/bg2.jpg");
+    background-size: cover;        
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: #FFFFFF;
+}
+
+.playlist hr {
+    width: 50%;
+}
+
+.playlist ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.playlist ul li {
+    margin-bottom: 5%;
+}
+
+.playlist ul li:hover {
+    cursor: pointer;
+}
+
+.playlist .title {
+    font-weight: bold;
+    margin-bottom: -10px;
+}
+
+.playlist .stop-playback {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+}
