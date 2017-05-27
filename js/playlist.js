@@ -12,10 +12,12 @@ var backgrounds = [ 'assets/img/bg1.jpg',
                    'assets/img/bg4.jpg'
                   ];
 
+var currID = 0;
+
 var audio = new Audio();
 audio.src = 'assets/mp3/chopin-spring.mp3';
 audio.controls = false;
-audio.autoplay = false;
+audio.autoplay = true;
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var context = new AudioContext();
@@ -33,8 +35,34 @@ $(document).ready(function () {
     $('#player').append(audio);
     
     $('li').click(function () {
-        var id = $(this).data("id");
-        audio.src=songs[id];
-        $('#player').css('background-image', 'url(' + '"' + backgrounds[id] + '")');
+        currID = $(this).data("id");
+        audio.src=songs[currID];
+        audio.play();
+        $('#player').css('background-image', 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' + '"' + backgrounds[currID] + '")');
+    });
+
+    $('#stop-playback').click(function () {
+       audio.pause(); 
+    });
+    
+    $('#player-list').click(function () {
+        $('html, body').animate({
+        scrollTop: $("#stop-playback").offset().top
+    }, 2000);           
+    });
+    
+    $('#player-back').click(function () {
+        currID = next(audio, currID, songs);
+    });
+    
+    $('#player-next').click(function () {
+        currID = previous(audio, currID, songs);
+    });
+    
+    $('#player-playpause').click(function () {
+        play_pause(audio);
+    });
+    audio.addEventListener("loadeddata", function() {
+        playerStartAnimation(audio.duration);
     });
 });

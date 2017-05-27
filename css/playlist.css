@@ -1,11 +1,12 @@
 .playlist {
     height: 80vh;
     padding-top: 10%;
-    color: #FFF;
-    background-image: url("../assets/img/bg2.jpg");
-    background-size: cover;        
-    background-repeat: no-repeat;
-    background-position: center center; 
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../assets/img/bg2.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size:  cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #FFFFFF;
 }
 
 .playlist hr {
@@ -22,9 +23,6 @@
 
 .playlist ul li {
     margin-bottom: 3%;
-}
-
-.playlist ul li:hover {
     cursor: pointer;
 }
 
@@ -37,4 +35,5 @@
     text-align: center;
     font-weight: bold;
     font-size: 1.5em;
+    cursor: pointer;
 }

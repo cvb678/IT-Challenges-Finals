@@ -4,18 +4,27 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/base.css">
         <link rel="stylesheet" type="text/css" href="css/playlist.css">
-        
+        <link rel="stylesheet" type="text/css" href="css/player.css">
+
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>     
+        <script type="text/javascript" src="js/player.js"></script>
         <script type="text/javascript" src="js/playlist.js"></script>
         <title>IT Challenges Final</title>
     </head>
     <body>
         <div id="player" class="player">
+            <canvas id="canvas-player" class="canvas-player" width="1200px" height="600px"></canvas>
+            <div class="player-buttons-container">
+                <div id="player-list" class=player-buttons-container-list>List</div>
+                <div id="player-back" class=player-buttons-container-backward>Back</div>
+                <div id="player-next" class=player-buttons-container-forward>Next</div>
+                <div id="player-playpause" class=player-buttons-container-playpause>P/P</div>
+            </div>
         </div>
         
         <div id="playlist" class="playlist">
             <hr />
-            <p class="stop-playback">X</p>
+            <p id="stop-playback" class="stop-playback">X</p>
             <hr />
             <ul>
                 <li data-id="0">
