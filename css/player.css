@@ -6,6 +6,7 @@
     -moz-background-size:  cover;
     -o-background-size: cover;
     background-size: cover;
+    color: #FFF;
 }
 
 .canvas-player {
@@ -20,9 +21,11 @@ div.player-buttons-container {
     width: 600px;
     margin: 0 auto;
     text-align: center;
-    color: #FFF;
 }
 
+.player-buttons-container div {
+    cursor: pointer;
+}
 .player-buttons-container-list {
     width: 50px;
     height: 50px;
@@ -52,4 +55,35 @@ div.player-buttons-container {
     width: 50px;
     height: 50px;
     padding-top: 58%;
+}
+
+.counter {
+    position: absolute;
+    top: 45vh;
+    left: 48%;
+    width: 150px;
+    height: 50px;
+    font-size: 2em;
+    
+}
+
+.player-title {
+    position: absolute;
+    top: 54vh;
+    left: 42%;
+    text-align: center;
+    width: 300px;
+    height: 50px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.player-author {
+    position: absolute;
+    top: 58vh;
+    left: 43%;
+    text-align: center;
+    width: 300px;
+    height: 50px;
+    font-size: 1em;
 }

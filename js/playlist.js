@@ -12,6 +12,12 @@ var backgrounds = [ 'assets/img/bg1.jpg',
                    'assets/img/bg4.jpg'
                   ];
 
+var titles = [ 'Spring', 
+                'Tarantelle, Op. 43', 
+                'Mazurka in D Major, Op. 4',
+                'Mazurka in D Major, Op. 71'
+             ];
+
 var currID = 0;
 
 var audio = new Audio();
@@ -39,6 +45,10 @@ $(document).ready(function () {
         audio.src=songs[currID];
         audio.play();
         $('#player').css('background-image', 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' + '"' + backgrounds[currID] + '")');
+        
+        $('html, body').animate({
+        scrollTop: $("#player").offset().top
+        }, 1000);
     });
 
     $('#stop-playback').click(function () {
@@ -48,7 +58,7 @@ $(document).ready(function () {
     $('#player-list').click(function () {
         $('html, body').animate({
         scrollTop: $("#stop-playback").offset().top
-    }, 2000);           
+        }, 1000);           
     });
     
     $('#player-back').click(function () {
@@ -64,5 +74,11 @@ $(document).ready(function () {
     });
     audio.addEventListener("loadeddata", function() {
         playerStartAnimation(audio.duration);
+        $('#counter').html('00:00');
+        $('#player-title').html(titles[currID]);
     });
+    
+    window.setInterval(function () {
+        $('#counter').html(audio.currentTime.toFixed(2).toString());
+    }, 250);
 });
