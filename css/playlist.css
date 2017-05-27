@@ -1,24 +1,11 @@
-div {
-    width: 1200px;
-    height: 100vh;
-    margin: 0 auto;
-    background-color: green;
-}
-
-.player {
-    background-image: url("../assets/img/bg1.jpg");
-    background-size: cover;        
-    background-repeat: no-repeat;
-    background-position: center center;    
-}
-
 .playlist {
+    height: 80vh;
     padding-top: 10%;
+    color: #FFF;
     background-image: url("../assets/img/bg2.jpg");
     background-size: cover;        
     background-repeat: no-repeat;
-    background-position: center center;
-    color: #FFFFFF;
+    background-position: center center; 
 }
 
 .playlist hr {
@@ -28,12 +15,13 @@ div {
 .playlist ul {
     margin: 0;
     padding: 0;
+    padding-top: 2%;
     list-style: none;
     text-align: center;
 }
 
 .playlist ul li {
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 
 .playlist ul li:hover {
