@@ -6,11 +6,6 @@ var songs = [ 'assets/mp3/chopin-spring.mp3',
     'assets/mp3/chopin-mazurka-in-d-major-b71.mp3'
     ];
 
-var backgrounds = [ 'assets/img/bg1.jpg',
-                   'assets/img/bg2.jpg',
-                   'assets/img/bg3.jpg',
-                   'assets/img/bg4.jpg'
-                  ];
 
 var titles = [ 'Spring', 
                 'Tarantelle, Op. 43', 
@@ -44,7 +39,7 @@ $(document).ready(function () {
         currID = $(this).data("id");
         audio.src=songs[currID];
         audio.play();
-        $('#player').css('background-image', 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' + '"' + backgrounds[currID] + '")');
+        setPlayerBackground(currID);
         
         $('html, body').animate({
         scrollTop: $("#player").offset().top
@@ -62,11 +57,11 @@ $(document).ready(function () {
     });
     
     $('#player-back').click(function () {
-        currID = next(audio, currID, songs);
+        currID = previous(audio, currID, songs);
     });
     
     $('#player-next').click(function () {
-        currID = previous(audio, currID, songs);
+        currID = next(audio, currID, songs);
     });
     
     $('#player-playpause').click(function () {
@@ -78,7 +73,8 @@ $(document).ready(function () {
         $('#player-title').html(titles[currID]);
     });
     
-    window.setInterval(function () {
-        $('#counter').html(audio.currentTime.toFixed(2).toString());
-    }, 250);
+    audio.addEventListener("timeupdate", function() {
+     $('#counter').html(audio.currentTime.toFixed(2).toString());
+    });
+    
 });

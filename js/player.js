@@ -1,5 +1,11 @@
 'use strict';
 
+var backgrounds = [ 'assets/img/bg1.jpg',
+                   'assets/img/bg2.jpg',
+                   'assets/img/bg3.jpg',
+                   'assets/img/bg4.jpg'
+                  ];
+
 var canvas, context, x, y, start;
 $(document).ready(function () {
     canvas = document.getElementById('canvas-player');
@@ -28,21 +34,29 @@ $(document).ready(function () {
     context.stroke();    
 });
 
-function playerStartAnimation(duration) {
-    var step = (360/duration)*(Math.PI/180);
-    start = 0;
-    setInterval(animatePlayer(step, start), 1000);
-};
-
-function animatePlayer (step, start) {
+function animatePlayer (step) {
     context.strokeStyle = '#FFF';
     context.lineWIdth = 3;
     context.beginPath();
     context.arc(x, y, 252, start, start+step, false);
     context.closePath();
     context.stroke();
+    //alert(start + ' : ' + start+step);
     start=start+step;
-}
+    //animatePlayer(start)
+};
+
+function playerStartAnimation(duration) {
+    var step = (360/duration)*(Math.PI/180);
+    start = 0;
+    setInterval(animatePlayer(step), 1000);
+};
+
+function setPlayerBackground(id) {
+    $('#player').css('background-image', 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' + '"' + backgrounds[id] + '")');
+};
+
+
 
 function play_pause (audio) {
     if(audio.paused) {
@@ -52,10 +66,10 @@ function play_pause (audio) {
     } else {
         audio.pause();
     }
-}
+};
 
 function next (audio, id, songs) {
-    if(id+1 === songs.length) {
+    if(id === songs.length-1) {
         id = 0;
     }
     else {
@@ -63,17 +77,19 @@ function next (audio, id, songs) {
     }
     
     audio.src = songs[id];
+    setPlayerBackground(id);
     return id;
-}
+};
 
 function previous (audio, id, songs) {
-    if(id-1 === -1) {
+    if(id === 0) {
         id = 3;
     } else {
         id = id-1;
     }
     
+    setPlayerBackground(id);
     audio.src = songs[id];
     
     return id;
-}
+};
